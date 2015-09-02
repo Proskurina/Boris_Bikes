@@ -1,8 +1,8 @@
 require 'docking_station'
 
-describe Docking_Station do
+describe DockingStation do
   # it "docking station instances will respond to release_bike method" do
-  #   instance = Docking_Station.new
+  #   instance = DockingStation.new
     # expect(instance).to respond_to :release_bike
   # end
   it { is_expected.to respond_to(:dock).with(1).argument }
@@ -15,7 +15,7 @@ describe Docking_Station do
     # is_expected is defined as expect(subject)
 
   # it "release_bike method returns a bike object" do
-  #   dock = Docking_Station.new
+  #   dock = DockingStation.new
   #   expect(dock.release_bike).to be_a Bike
   #   expect(dock.release_bike.working?).to eq true
   # end
@@ -27,7 +27,7 @@ describe Docking_Station do
 
   describe "#dock" do
     it "raises an error when full" do
-      subject.dock Bike.new
+      20.times {subject.dock Bike.new}
       expect{subject.dock(Bike.new)}.to raise_error("Docking station full")
     end
   end
