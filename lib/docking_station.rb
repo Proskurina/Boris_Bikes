@@ -12,12 +12,22 @@ class DockingStation
 
   def release_bike
     fail 'No bikes available' if empty?
-    bikes.pop
+    fail 'No working bikes available' if not any_working?
+    first_working
   end
 
   def dock(bike)
     fail 'Docking station full' if full?
     bikes << bike
+  end
+
+  def first_working
+    place =bikes.index{|bike| bike.working? == true}
+    bikes[place]
+  end
+
+  def any_working?
+    @bikes.any? {|bike| bike.working? == true}
   end
 
   private
@@ -31,5 +41,6 @@ class DockingStation
   def empty?
     bikes.empty?
   end
+
 end 
 
